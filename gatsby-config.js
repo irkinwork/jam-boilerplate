@@ -1,3 +1,6 @@
+if (['development', 'production'].includes(process.env.NODE_ENV)) {
+  require("dotenv").config();
+}
 /**
  * Configure your Gatsby site with this file.
  *
@@ -18,5 +21,12 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    }
   ],
 }
