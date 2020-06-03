@@ -6,11 +6,6 @@ export default function Home({ data }) {
   return (
     <Layout>
       <div>
-        <h1
-        >
-          Amazing Pandas Eating Things
-        </h1>
-        {/*<h4>{data.allMarkdownRemark.totalCount} Posts</h4>*/}
         {data.allContentfulArticle.edges.map(({ node }) => (
           <div>
             <Link
@@ -21,10 +16,9 @@ export default function Home({ data }) {
                 {node.title}{" "}
                 <span
                 >
-                  — {node.publishedAt}
+                  — {node.createdAt}
                 </span>
               </h3>
-                {/*<p>{node.excerpt}</p>*/}
             </Link>
           </div>
         ))}
@@ -40,7 +34,7 @@ export const query = graphql`
         node {
           slug
           title
-          publishedAt
+          createdAt
         }
       }
     }
